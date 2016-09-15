@@ -192,7 +192,7 @@ x |==| y = x ||| strutX 0.1 ||| y
 x |=| y = (|==|) <$> x <*> y
 
 icie :: FilePath -> String -> IO (Diagram B)
-icie p f = getExternalImg (mkWidth 2) (p++f) mempty
+icie p f = getExternalImg (mkWidth 2) (p++"/" ++ f) mempty
 
 useIcon :: String -> IO (Diagram B)
 useIcon p = getExternalImg (mkWidth 2) ("/home/shane/haskellStacks/calendar/icons/"++p) mempty

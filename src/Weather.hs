@@ -32,7 +32,7 @@ instance Default WeatherSettings where
 
 
 weatherIcon :: WeatherSettings -> String -> FilePath
-weatherIcon st s = st ^. iconpath ++ theFile s
+weatherIcon st s = st ^. iconpath ++ "/" ++ theFile s
   where
     s' = map toLower s
     theFile s | todayIs "cloudy" = "cloudy.png"
@@ -53,7 +53,7 @@ weatherImage s   = do (e,n,_) <- readCreateProcessWithExitCode (shell ("wget --t
                            res <-  loadImageEmb ((s ^. weatherFunction) s n)
                            return $ case res of
                              Right img -> image img # sized (mkWidth w) === alignedText 0.5 1 (a1 ++ " - " ++ a2 ++ " C") # fontSize 16 # bold
-                             Left _ -> mempty
+                             Left _ -> alignedText 0.5 1 (dropWhile (not . isLetter) $ lines n!!2) # fontSize 16 # bold === strutY 10  === alignedText 0.5 1 (a1 ++ " - " ++ a2 ++ " C") # fontSize 16 # bold
                         else do im <-  loadImageEmb "/home/shane/Dropbox/icons/internetDown.jpg"
                                 return $ case im of
                                   Right img -> image img # sized (mkWidth w)

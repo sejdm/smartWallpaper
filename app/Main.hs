@@ -18,7 +18,7 @@ myTodoSettings = def & todosources .~
 
      & todoweekattribute .~ (fc blue # bold)
      & todotimeattribute .~ (fc green # bold # opacity 0.8)
-     & entryformatter .~ defaultFormatUsingPath "/home/shane/Dropbox/icons/"
+     & entryformatter .~ defaultFormatUsingPath "/home/shane/Dropbox/icons"
 
 
 
@@ -38,7 +38,7 @@ mysimple = hStackedWallSimple <$> sequence [
 
 
 weather = hStackedWallSimple <$> sequence [
-    todoIO $ myTodoSettings 
+    todoIO $ myTodoSettings
   , calendarIO def
   , weatherIO $ myWeatherSettings
   ]
