@@ -1,4 +1,5 @@
 # Install
+First, ensure that you have the Haskell Platform and Haskell Stack installed. Then,
 ~~~
 git clone "https://github.com/sejdm/smartWallpaper"
 cd smartWallpaper
