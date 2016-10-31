@@ -38,7 +38,7 @@ mysimple = hStackedWallSimple <$> sequence [
 
 
 weather = hStackedWallSimple <$> sequence [
-    translateX (-20) . sized (mkHeight 160) <$> ( todoIO $ myTodoSettings)
+    translateX (-20) . sized (mkHeight 190) <$> ( todoIO $ myTodoSettings)
   , calendarIO def
   , weatherIO $ myWeatherSettings
   ]

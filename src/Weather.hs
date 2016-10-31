@@ -42,6 +42,7 @@ weatherIcon st s = st ^. iconpath ++ "/" ++ theFile s
               | todayIs "drizzle" = "rain.png"
               | todayIs "overcast" = "overcast.png"
               | todayIs "clear" = "clear.png"
+              | todayIs "sunny" = "sunny.png"
               | otherwise = "unknown.png"
      where todayIs x = x `isInfixOf` s'
 
