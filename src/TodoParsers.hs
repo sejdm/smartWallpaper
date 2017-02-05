@@ -36,6 +36,9 @@ formatOrgTimeDaily t = daily <$> myformat "<%Y-%m-%d %a %H:%M +1d>" 27 t
 formatOrgTimeDailyAllDay t = dailyFull <$> myformat "<%Y-%m-%d %a +1d>" 21 t
 
 
+formatOrgTimeYearly t = yearly <$> myformat "<%Y-%m-%d %a %H:%M +1y>" 27 t
+formatOrgTimeYearlyAllDay t = yearlyFull <$> myformat "<%Y-%m-%d %a +1y>" 21 t
+
 formatOrgTimeWeekly t = weekly <$> myformat "<%Y-%m-%d %a %H:%M +1w>" 27 t
 formatOrgTimeWeeklyAllDay t = weeklyFull <$> myformat "<%Y-%m-%d %a +1w>" 21 t
 
@@ -53,7 +56,7 @@ formatOrgRangeTime t = do
   f2 <- myformat "--<%Y-%m-%d %a>" 18 (drop 22 t)
   return (dailyFromTo f1 f2)
 
-formatOrgAny t = formatOrgRangeTime t <|> formatOrgRange t <|> formatOrgTimeMonthlyAllDay t <|> formatOrgTimeMonthly t <|> formatOrgTimeWeekly t  <|> formatOrgTimeDaily t <|> formatOrgTimeWeeklyAllDay t <|> formatOrgTimeDailyAllDay t <|> formatOrgTime t <|> formatOrgFullDay t
+formatOrgAny t = formatOrgRangeTime t <|> formatOrgRange t <|> formatOrgTimeYearly t <|> formatOrgTimeYearlyAllDay t <|> formatOrgTimeMonthlyAllDay t <|> formatOrgTimeMonthly t <|> formatOrgTimeWeekly t  <|> formatOrgTimeDaily t <|> formatOrgTimeWeeklyAllDay t <|> formatOrgTimeDailyAllDay t <|> formatOrgTime t <|> formatOrgFullDay t
 
 removeOrgStars = dropWhile (==' ') . dropWhile (=='*')
 getOrgDate t = asum $ map formatOrgAny $ tails t

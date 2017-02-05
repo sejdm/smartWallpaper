@@ -23,7 +23,7 @@ library
                      , Choice
                      , TodoFormat
                      , TodoParsers
-  build-depends:       base >= 4.7 && < 5
+  build-depends:       base 
                      , diagrams
                      , diagrams-rasterific
                      , diagrams-contrib
