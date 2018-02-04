@@ -39,6 +39,7 @@ data MyTime = TheTime MyDuration Recurrence LocalTime deriving (Eq)
 --data When = When Recurrence LocalTime | AllDay Recurrence LocalTime | AllDayRange When When | OnlyDay Day deriving (Show, Eq)
 
 thrd (_, _, z) = z
+snd' (_, z, _) = z
 
   {-
 instance Eq When where
@@ -83,6 +84,7 @@ matchDay d (TheTime (EndTime t) _ t') = localDay t' <= d && d <= localDay t
 matchDay y x = case whenToRec x of
   Weekly -> thrd (toWeekDate y) == thrd (toWeekDate d)
   Monthly -> thrd (toGregorian y) == thrd (toGregorian d)
+  Yearly -> (thrd (toGregorian y) == thrd (toGregorian d)) && (snd' (toGregorian y) == snd' (toGregorian d))
   DailyRange t' t -> localDay t' <= d && d <= localDay t
   Daily -> True
   _ -> y == d
